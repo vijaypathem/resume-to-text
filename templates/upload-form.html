@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>File Upload</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="C:\Users\vijay\OneDrive\Desktop\FastApi\templates\style.css"
+    />
+    <script>
+      // Function to show the alert and hide it after a specified duration
+      function showAlert() {
+        var alertDiv = document.getElementById("alertMessage");
+        alertDiv.style.display = "block";
+
+        // Hide the alert after 3 seconds (3000 milliseconds)
+        setTimeout(function () {
+          alertDiv.style.display = "none";
+
+          // Submit the form after hiding the alert
+          document.getElementById("uploadForm").submit();
+        }, 500);
+
+        // Return false to prevent the default form submission
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>File Upload</h1>
+    <form
+      id="uploadForm"
+      method="post"
+      enctype="multipart/form-data"
+      action="/uploadfile/"
+      onsubmit="return showAlert()"
+    >
+      <input type="file" name="files" multiple />
+      <button type="submit">Submit</button>
+    </form>
+    <div>{{ message }}</div>
+  </body>
+</html>
